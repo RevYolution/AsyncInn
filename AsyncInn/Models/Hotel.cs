@@ -14,7 +14,7 @@ namespace AsyncInn.Models
         public string State { get; set; }
         public int PhoneNumber { get; set; }
 
-        public ICollection<HotelRoom> HotelRoom { get; set; }
+        public ICollection<HotelRoom> Rooms { get; set; }
 
     }
 }
