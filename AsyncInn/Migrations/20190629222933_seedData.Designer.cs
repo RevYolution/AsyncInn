@@ -3,14 +3,16 @@ using AsyncInn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AsyncInn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    partial class AsyncInnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190629222933_seedData")]
+    partial class seedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,15 +126,6 @@ namespace AsyncInn.Migrations
                             PhoneNumber = 784512,
                             State = "WA",
                             StreetAddress = "2149 Above All Ave"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            City = "Sydney",
-                            Name = "Thunder from Down Under",
-                            PhoneNumber = 951623,
-                            State = "OR",
-                            StreetAddress = "52 Wallibee Way"
                         });
                 });
 
@@ -193,18 +186,6 @@ namespace AsyncInn.Migrations
                             ID = 4,
                             Layout = 1,
                             Name = "Paperthin Hymn"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Layout = 0,
-                            Name = "Paramore"
-                        },
-                        new
-                        {
-                            ID = 6,
-                            Layout = 2,
-                            Name = "Riot"
                         });
                 });
 

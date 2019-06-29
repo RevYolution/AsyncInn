@@ -12,5 +12,19 @@
 </head>
 <body>
     <p>Hello?</p>
+    <div>
+        <a href="@Url.Action("Index","Hotels")">Manage Hotels</a> | <a href="@Url.Action("Index","Rooms")">Manage Rooms</a> | <a href="@Url.Action("Index","HotelRooms")">Manage Hotel Rooms</a> | <a href="@Url.Action("Index","Amenities")">Manage Amenities</a> | <a href="@Url.Action("Index","RoomAmenities")">Manage Room Amenities</a>
+    </div>
+
+    <div>
+        <h2>Quick Actions</h2>
+        <ul>
+            <li><a href="@Url.Action("Create","Hotels")">Create Hotel</a></li>
+            <li><a href="@Url.Action("Create","Rooms")">Create Room</a></li>
+            <li><a href="@Url.Action("Create","Amenities")">Create Amenity</a></li>
+            <li><a href="@Url.Action("Create","HotelRooms")">Link Hotel Rooms</a></li>
+            <li><a href="@Url.Action("Create","RoomAmenities")">Link Room Amenities</a></li>
+        </ul>
+    </div>
 </body>
 </html>
