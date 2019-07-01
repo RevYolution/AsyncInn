@@ -1,5 +1,6 @@
 ﻿using AsyncInn.Data;
 using AsyncInn.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace AsyncInn.Models.Services
 
         public async Task DeleteRoomAsync(int id)
         {
-            Room room = await GetRooms(id);
+            Room room = await GetRoom(id);
             _context.Rooms.Remove(room);
             await _context.SaveChangesAsync();
         }
@@ -41,7 +42,7 @@ namespace AsyncInn.Models.Services
 
         public async Task<Room> GetRoom(int? id)
         {
-            return await _context.Rooms.FirstOrDefault(x => x.ID == id);
+            return await _context.Rooms.FirstOrDefaultAsync(room => room.ID == id);
         }
 
         public Task<List<RoomAmenities>> GetRoomAmenities()

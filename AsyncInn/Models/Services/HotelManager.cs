@@ -1,5 +1,6 @@
 ﻿using AsyncInn.Data;
 using AsyncInn.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,59 +16,80 @@ namespace AsyncInn.Models.Services
         {
             _context = context;
         }
-        public Task AddHotel(Hotel hotel)
+        public async Task AddHotel(Hotel hotel)
         {
-            throw new NotImplementedException();
+            await _context.Hotels.AddAsync(hotel);
+            await _context.SaveChangesAsync();
         }
 
-        public Task AddHotelRoom(HotelRoom hotelRoom)
+        public async Task AddHotelRoom(HotelRoom hotelRoom)
         {
-            throw new NotImplementedException();
+            await _context.HotelRooms.AddAsync(hotelRoom);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteHotel(Hotel hotel)
+        public async Task DeleteHotel(int id)
         {
-            throw new NotImplementedException();
+            Hotel hotel = await GetHotel(id);
+            _context.Hotels.Remove(hotel);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteHotelRoom(HotelRoom hotelRoom)
+        public async Task DeleteHotelRoom(int hotelID, int roomID)
         {
-            throw new NotImplementedException();
+            HotelRoom hotelRoom = await GetHotelRoom(hotelID, roomID);
+            _context.HotelRooms.Remove(hotelRoom);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Hotel> GetHotel(int? id)
+        public async Task<Hotel> GetHotel(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Hotels.FirstOrDefaultAsync(hotel => hotel.ID == id);
         }
 
-        public Task<HotelRoom> GetHotelRoom(int hotelID, int roomNumber)
+        public async Task<HotelRoom> GetHotelRoom(int hotelID, int roomID)
         {
-            throw new NotImplementedException();
+            return await _context.HotelRooms
+                            .Include(r => r.Hotel)
+                            .Include(r => r.Room)
+                            .FirstOrDefaultAsync(m => m.RoomNumber == roomID && m.HotelID == hotelID);
         }
 
-        public Task<List<HotelRoom>> GetHotelRooms()
+        public async Task<List<HotelRoom>> GetHotelRooms()
         {
-            throw new NotImplementedException();
+            return await _context.HotelRooms
+                                .Include(hotel => hotel.Hotel)
+                                .Include(hotel => hotel.Room)
+                                .ToListAsync();
         }
 
-        public Task<List<Hotel>> GetHotels(string name = null)
+        public async Task<List<Hotel>> GetHotels(string name = null)
         {
-            throw new NotImplementedException();
+            IQueryable<Hotel> hotels = _context.Hotels;
+
+            if (!String.IsNullOrEmpty(name))
+            {
+                hotels = hotels.Where(s => s.Name.Contains(name));
+            }
+
+            return await hotels.ToListAsync();
         }
 
-        public Task<bool> HotelRoomIsPresent(int id, int roomNumber)
+        public async Task<bool> HotelRoomIsPresent(int id, int roomNumber)
         {
-            throw new NotImplementedException();
+            return await _context.HotelRooms.FirstOrDefaultAsync(r => r.HotelID == id && r.RoomNumber == roomNumber) != null;
         }
 
-        public Task UpdateHotel(Hotel hotel)
+        public async Task UpdateHotel(Hotel hotel)
         {
-            throw new NotImplementedException();
+            _context.Hotels.Update(hotel);
+            await _context.SaveChangesAsync();
         }
 
-        public Task UpdateHotelRoom(HotelRoom hotelRoom)
+        public async Task UpdateHotelRoom(HotelRoom hotelRoom)
         {
-            throw new NotImplementedException();
+            _context.HotelRooms.Update(hotelRoom);
+            await _context.SaveChangesAsync();
         }
     }
 }

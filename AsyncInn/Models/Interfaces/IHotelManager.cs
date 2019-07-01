@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AsyncInn.Models.Interfaces
 {
-    interface IHotelManager
+    public interface IHotelManager
     {
         /// <summary>
         /// Add a hotel 
@@ -19,7 +19,7 @@ namespace AsyncInn.Models.Interfaces
         /// </summary>
         /// <param name="hotel"></param>
         /// <returns></returns>
-        Task DeleteHotel(Hotel hotel);
+        Task DeleteHotel(int id);
 
         /// <summary>
         /// Update hotel
@@ -40,7 +40,7 @@ namespace AsyncInn.Models.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<Hotel> GetHotel(int? id);
+        Task<Hotel> GetHotel(int id);
 
         /// <summary>
         /// Checks if a hotel room exists. 
@@ -62,7 +62,7 @@ namespace AsyncInn.Models.Interfaces
         /// </summary>
         /// <param name="hotelRoom"></param>
         /// <returns></returns>
-        Task DeleteHotelRoom(HotelRoom hotelRoom);
+        Task DeleteHotelRoom(int hotelID, int roomID);
 
         /// <summary>
         /// Updates a hotel room in a hotel. 
@@ -83,7 +83,7 @@ namespace AsyncInn.Models.Interfaces
         /// <param name="hotelID"></param>
         /// <param name="roomNumber"></param>
         /// <returns></returns>
-        Task<HotelRoom> GetHotelRoom(int hotelID, int roomNumber);
+        Task<HotelRoom> GetHotelRoom(int hotelID, int roomID);
 
         
     }

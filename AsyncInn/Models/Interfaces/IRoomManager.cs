@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AsyncInn.Models.Interfaces
 {
-    interface IRoomManager
+    public interface IRoomManager
     {
         /// <summary>
         /// Add a room
@@ -19,7 +19,7 @@ namespace AsyncInn.Models.Interfaces
         /// </summary>
         /// <param name="room"></param>
         /// <returns></returns>
-        Task DeleteRoomAsync(Room room);
+        Task DeleteRoomAsync(int id);
 
         /// <summary>
         /// Update a room
