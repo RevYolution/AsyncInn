@@ -5,21 +5,21 @@ using System.Threading.Tasks;
 
 namespace AsyncInn.Models.Interfaces
 {
-    interface IRoom
+    interface IRoomManager
     {
         /// <summary>
         /// Add a room
         /// </summary>
         /// <param name="room"></param>
         /// <returns></returns>
-        Task AddRoom(Room room);
+        Task AddRoomAsync(Room room);
 
         /// <summary>
         /// Delete a room
         /// </summary>
         /// <param name="room"></param>
         /// <returns></returns>
-        Task DeleteRoom(Room room);
+        Task DeleteRoomAsync(Room room);
 
         /// <summary>
         /// Update a room
@@ -54,7 +54,7 @@ namespace AsyncInn.Models.Interfaces
         /// </summary>
         /// <param name="roomAmenities"></param>
         /// <returns></returns>
-        Task AddRoomAmenity(RoomAmenities roomAmenities);
+        Task AddRoomAmenityAsync(RoomAmenities roomAmenities);
 
         /// <summary>
         /// Delete a room amenity

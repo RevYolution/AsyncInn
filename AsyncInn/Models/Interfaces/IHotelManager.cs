@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AsyncInn.Models.Interfaces
 {
-    interface IHotel
+    interface IHotelManager
     {
         /// <summary>
         /// Add a hotel 
