@@ -30,7 +30,7 @@ namespace AsyncInn.Models.Services
 
         public async Task DeleteRoomAsync(int id)
         {
-            Room room = await GetRoom(id);
+            Room room = await GetRoomAsync(id);
             _context.Rooms.Remove(room);
             await _context.SaveChangesAsync();
         }
@@ -40,34 +40,44 @@ namespace AsyncInn.Models.Services
             throw new NotImplementedException();
         }
 
-        public async Task<Room> GetRoom(int? id)
+        public async Task<Room> GetRoomAsync(int? id)
         {
             return await _context.Rooms.FirstOrDefaultAsync(room => room.ID == id);
         }
 
-        public Task<List<RoomAmenities>> GetRoomAmenities()
+        public async Task<List<RoomAmenities>> GetRoomAmenitiesAsync()
         {
-            throw new NotImplementedException();
+            return await _context.RoomAmenities
+                                .Include(ra => ra.Amenities)
+                                .Include(r => r.Room)
+                                .ToListAsync();
         }
 
-        public Task<RoomAmenities> GetRoomAmenities(int amenityID, int roomID)
+        public async Task<RoomAmenities> GetRoomAmenitiesAsync(int amenityID, int roomID)
         {
-            throw new NotImplementedException();
+                return await _context.RoomAmenities
+                                    .Include(ra => ra.Amenities)
+                                    .Include(r => r.Room)
+                                    .FirstOrDefaultAsync(m => m.AmenitiesID == amenityID                && m.RoomID == roomID);
+
         }
 
-        public Task<List<Room>> GetRooms()
+        public async Task<List<Room>> GetRoomsAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Rooms.ToListAsync();
         }
 
-        public Task<bool> RoomAmenityPresent(int id, int amenityID)
+        public async Task<bool> RoomAmenityPresentAsync(int id, int amenityID)
         {
-            throw new NotImplementedException();
+            return await _context.RoomAmenities.FirstOrDefaultAsync(r => r.RoomID == id && r.AmenitiesID == amenityID) != null;
         }
 
-        public Task UpdateRoom(Room room)
+
+
+        public async Task UpdateRoomAsync(Room room)
         {
-            throw new NotImplementedException();
+            _context.Rooms.Update(room);
+            await _context.SaveChangesAsync();
         }
 
         public Task UpdateRoomAmenity(RoomAmenities roomAmenities)

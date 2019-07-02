@@ -26,20 +26,20 @@ namespace AsyncInn.Models.Interfaces
         /// </summary>
         /// <param name="room"></param>
         /// <returns></returns>
-        Task UpdateRoom(Room room);
+        Task UpdateRoomAsync(Room room);
 
         /// <summary>
         /// Get a list of rooms
         /// </summary>
         /// <returns></returns>
-        Task<List<Room>> GetRooms();
+        Task<List<Room>> GetRoomsAsync();
 
         /// <summary>
         /// Get a single room
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<Room> GetRoom(int? id);
+        Task<Room> GetRoomAsync(int? id);
 
         /// <summary>
         /// Check to see if an amenity is associated with a room
@@ -47,7 +47,8 @@ namespace AsyncInn.Models.Interfaces
         /// <param name="id"></param>
         /// <param name="aminetyID"></param>
         /// <returns></returns>
-        Task<bool> RoomAmenityPresent(int id, int amenityID);
+        Task<bool> RoomAmenityPresentAsync(int id, int amenityID);
+
 
         /// <summary>
         /// Add a new room amenity
@@ -74,7 +75,7 @@ namespace AsyncInn.Models.Interfaces
         /// Get a list of all room amenities
         /// </summary>
         /// <returns></returns>
-        Task<List<RoomAmenities>> GetRoomAmenities();
+        Task<List<RoomAmenities>> GetRoomAmenitiesAsync();
 
         /// <summary>
         /// Get a single amenity
@@ -82,6 +83,6 @@ namespace AsyncInn.Models.Interfaces
         /// <param name="amenityID"></param>
         /// <param name="roomID"></param>
         /// <returns></returns>
-        Task<RoomAmenities> GetRoomAmenities(int amenityID, int roomID);
+        Task<RoomAmenities> GetRoomAmenitiesAsync(int amenityID, int roomID);
     }
 }
