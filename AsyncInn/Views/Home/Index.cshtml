@@ -8,13 +8,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <link href="~/Styles/Reset.css" rel="stylesheet" />
+    <link href="~/Styles/Styling.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <title>Async Inn Home</title>
 </head>
 <body>
-    <p>Hello?</p>
-    <div>
+    <header>
+        <h2>Async Inn</h2>
         <a href="@Url.Action("Index","Hotels")">Manage Hotels</a> | <a href="@Url.Action("Index","Rooms")">Manage Rooms</a> | <a href="@Url.Action("Index","HotelRooms")">Manage Hotel Rooms</a> | <a href="@Url.Action("Index","Amenities")">Manage Amenities</a> | <a href="@Url.Action("Index","RoomAmenities")">Manage Room Amenities</a>
-    </div>
+    </header>
 
     <div>
         <h2>Quick Actions</h2>
