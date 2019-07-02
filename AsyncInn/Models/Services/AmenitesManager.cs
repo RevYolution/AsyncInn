@@ -1,5 +1,6 @@
 ﻿using AsyncInn.Data;
 using AsyncInn.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,29 +16,28 @@ namespace AsyncInn.Models.Services
         {
             _context = context;
         }
-        public Task AddAmenity(Amenities amenities)
+        public async Task AddAmenityAsync(Amenities amenities)
         {
-            throw new NotImplementedException();
+            _context.Amenities.Add(amenities);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAmenity(Amenities amenities)
+        public async Task DeleteAmenityAsync(int id)
         {
-            throw new NotImplementedException();
+            Amenities Amenity = await GetAmenityAsync(id);
+            _context.Amenities.Remove(Amenity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<List<Amenities>> GetAmenities()
+        public async Task<List<Amenities>> GetAmenitiesAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Amenities.ToListAsync();
         }
 
-        public Task<Amenities> GetAmenities(int? id)
+        public async Task<Amenities> GetAmenityAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Amenities.FirstOrDefaultAsync(a => a.ID == id);
         }
 
-        public Task UpdateAmenity(Amenities amenities)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

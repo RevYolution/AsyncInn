@@ -35,9 +35,11 @@ namespace AsyncInn.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteRoomAmenity(RoomAmenities roomAmenities)
+        public async Task DeleteRoomAmenityAsync(int amenityID, int roomID)
         {
-            throw new NotImplementedException();
+            RoomAmenities roomAmenities = await GetRoomAmenitiesAsync(amenityID, roomID);
+            _context.RoomAmenities.Remove(roomAmenities);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Room> GetRoomAsync(int? id)

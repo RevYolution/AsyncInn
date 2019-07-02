@@ -12,33 +12,27 @@ namespace AsyncInn.Models.Interfaces
         /// </summary>
         /// <param name="amenities"></param>
         /// <returns></returns>
-        Task AddAmenity(Amenities amenities);
+        Task AddAmenityAsync(Amenities amenities);
 
-        /// <summary>
-        /// Update an amenity for a room
-        /// </summary>
-        /// <param name="amenities"></param>
-        /// <returns></returns>
-        Task UpdateAmenity(Amenities amenities);
 
         /// <summary>
         /// Deletes an amenity from a room 
         /// </summary>
         /// <param name="amenities"></param>
         /// <returns></returns>
-        Task DeleteAmenity(Amenities amenities);
+        Task DeleteAmenityAsync(int id);
 
         /// <summary>
         /// Provides all the amenities
         /// </summary>
         /// <returns></returns>
-        Task<List<Amenities>> GetAmenities();
+        Task<List<Amenities>> GetAmenitiesAsync();
 
         /// <summary>
         /// Gets a single amenity 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<Amenities> GetAmenities(int? id);
+        Task<Amenities> GetAmenityAsync(int? id);
     }
 }

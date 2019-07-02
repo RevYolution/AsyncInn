@@ -62,7 +62,7 @@ namespace AsyncInn.Models.Interfaces
         /// </summary>
         /// <param name="roomAmenities"></param>
         /// <returns></returns>
-        Task DeleteRoomAmenity(RoomAmenities roomAmenities);
+        Task DeleteRoomAmenityAsync(int amenityID, int roomID);
 
         /// <summary>
         /// Update a room amenity
