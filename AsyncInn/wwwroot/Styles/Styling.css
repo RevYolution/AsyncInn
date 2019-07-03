@@ -1,9 +1,23 @@
-﻿body {
+﻿a:link{
+    color:antiquewhite;
+}
+a:visited {
+    color: antiquewhite;
+}
+a:hover{
+    color:orange;
+}
+body {
     font-family: 'Kaushan Script', cursive;
+    background-image: url(https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjXiovumJnjAhVpwFQKHbFLCH4QjRx6BAgBEAU&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fblack-and-white-background&psig=AOvVaw2vdi7VpTw9TjqK-own2ChL&ust=1562258557041199);
 }
 
 header {
     text-align: center;
-    background
+    background-image: url(https://cdn.pixabay.com/photo/2017/10/03/17/53/nature-2813487_960_720.jpg);
+    /*height: 500px;*/
+    background-repeat: no-repeat;
+    background-position:center;
+    height:150px;
 }
 
