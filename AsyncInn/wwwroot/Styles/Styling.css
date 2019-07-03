@@ -24,4 +24,22 @@ header {
     height: 150px;
     width:100%;
 }
+table {
+    grid-column-start: 2;
+    grid-column-end:4;
+    text-align:center;
+    background-color: hsla(258, 100%, 20%, 0.79);
+    border: solid;
+    color: aliceblue;
+}
+
+td {
+    border: solid;
+    border-color: black;
+}
+#tablecontainer{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    
+}
 
