@@ -13,17 +13,17 @@ namespace AsyncInn.Controllers
 {
     public class RoomsController : Controller
     {
-        private readonly IRoomManager _rooms;
+        private readonly IRoomManager _context;
 
         public RoomsController(IRoomManager context)
         {
-            _rooms = context;
+            _context = context;
         }
 
         // GET: Rooms
         public async Task<IActionResult> Index()
         {
-            return View(await _rooms.GetRoomsAsync());
+            return View(await _context.GetRoomsAsync());
         }
 
         // GET: Rooms/Details/5
@@ -34,7 +34,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            var room = await _rooms.GetRoomAsync(id);
+            var room = await _context.GetRoomAsync(id);
             if (room == null)
             {
                 return NotFound();
@@ -58,7 +58,7 @@ namespace AsyncInn.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _rooms.AddRoomAsync(room);
+                await _context.AddRoomAsync(room);
                 return RedirectToAction(nameof(Index));
             }
             return View(room);
@@ -72,7 +72,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            var room = await _rooms.GetRoomAsync(id);
+            var room = await _context.GetRoomAsync(id);
             if (room == null)
             {
                 return NotFound();
@@ -96,7 +96,7 @@ namespace AsyncInn.Controllers
             {
                 try
                 {
-                    await _rooms.UpdateRoomAsync(room);
+                    await _context.UpdateRoomAsync(room);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -122,7 +122,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            var room = await _rooms.GetRoomAsync(id);
+            var room = await _context.GetRoomAsync(id);
             if (room == null)
             {
                 return NotFound();
@@ -136,13 +136,13 @@ namespace AsyncInn.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _rooms.DeleteRoomAsync(id);
+            await _context.DeleteRoomAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool RoomExists(int id)
         {
-            return _rooms.GetRoomAsync(id) != null;
+            return _context.GetRoomAsync(id) != null;
         }
     }
 }
