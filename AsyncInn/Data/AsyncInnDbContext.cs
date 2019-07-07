@@ -92,7 +92,7 @@ namespace AsyncInn.Data
                 {
                     ID = 3,
                     Name = "Anberlin",
-                    Layout = Layout.studio
+                    Layout = Layout.Studio
                 },
 
                 new Room
@@ -105,7 +105,7 @@ namespace AsyncInn.Data
                 {
                     ID = 5,
                     Name = "Paramore",
-                    Layout = Layout.studio
+                    Layout = Layout.Studio
                 },
                 new Room
                 {

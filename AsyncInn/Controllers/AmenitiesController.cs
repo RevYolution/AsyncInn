@@ -13,8 +13,15 @@ namespace AsyncInn.Controllers
 {
     public class AmenitiesController : Controller
     {
+        /// <summary>
+        /// Context for Amenities
+        /// </summary>
         private readonly IAmenityManager _context;
 
+        /// <summary>
+        /// Initializes new instance of the Amenities controller
+        /// </summary>
+        /// <param name="context"></param>
         public AmenitiesController(IAmenityManager context)
         {
             _context = context;
@@ -52,6 +59,12 @@ namespace AsyncInn.Controllers
         // POST: Amenities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        /// <summary>
+        /// Creates new amenity
+        /// </summary>
+        /// <param name="amenities"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Name")] Amenities amenities)
@@ -65,6 +78,11 @@ namespace AsyncInn.Controllers
         }
 
         // GET: Amenities/Edit/5
+        /// <summary>
+        /// Edit an amenity
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(int id)
         {
             if (id <= 0)
@@ -116,6 +134,11 @@ namespace AsyncInn.Controllers
         //}
 
         // GET: Amenities/Delete/5
+        /// <summary>
+        /// Deletes an amenity
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0)
@@ -133,6 +156,11 @@ namespace AsyncInn.Controllers
         }
 
         // POST: Amenities/Delete/5
+        /// <summary>
+        /// Posts the delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

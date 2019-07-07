@@ -1,12 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace AsyncInn.Models
 {
+    public enum Layout
+    {
+        [Display(Name = "Studio")]
+        Studio,
+        [Display(Name = "One Bedroom")]
+        OneBedroom,
+        [Display(Name = "Two Bedroom")]
+        TwoBedroom
+    }
+
     public class Room
     {
+        [Key]
         public int ID { get; set; }
         public string Name { get; set; }
         public Layout Layout { get; set; }
@@ -15,10 +27,4 @@ namespace AsyncInn.Models
         public ICollection<RoomAmenities> RoomAmenities { get; set; }
     }
 
-    public enum Layout
-    {
-        studio = 0,
-        OneBedroom = 1,
-        TwoBedroom = 2
-    }
 }

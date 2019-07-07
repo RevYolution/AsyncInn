@@ -20,6 +20,15 @@
         <a href="@Url.Action("Index","Hotels")">Manage Hotels</a> | <a href="@Url.Action("Index","Rooms")">Manage Rooms</a> | <a href="@Url.Action("Index","HotelRooms")">Manage Hotel Rooms</a> | <a href="@Url.Action("Index","Amenities")">Manage Amenities</a> | <a href="@Url.Action("Index","RoomAmenities")">Manage Room Amenities</a> | <a href="@Url.Action("Index","Home")">Home Page</a>
     </header>
 
+    <form asp-controller="Hotel" asp-action="Index">
+        <label>Search</label>
+        <input type="text" name="searchString" />
+        <input type="submit" value="Filter" />
+
+    </form>
+    <p> There are @Model.ToArray().Length Hotels</p>
+
+
     <p>
         <a asp-action="Create">Create New</a>
     </p>
