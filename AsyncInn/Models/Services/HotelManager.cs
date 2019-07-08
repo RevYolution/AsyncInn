@@ -91,5 +91,10 @@ namespace AsyncInn.Models.Services
             _context.HotelRooms.Update(hotelRoom);
             await _context.SaveChangesAsync();
         }
+
+        public Task CreateHotel(Hotel hotel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
