@@ -27,9 +27,9 @@ namespace AsyncInn.Controllers
         }
 
         // GET: RoomAmenities/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int roomID, int amenitiesID)
         {
-            if (id == null)
+            if (roomID == 0|| amenitiesID == 0) 
             {
                 return NotFound();
             }
@@ -37,7 +37,7 @@ namespace AsyncInn.Controllers
             var roomAmenities = await _context.RoomAmenities
                 .Include(r => r.Amenities)
                 .Include(r => r.Room)
-                .FirstOrDefaultAsync(m => m.AmenitiesID == id);
+                .FirstOrDefaultAsync(m => m.AmenitiesID == amenitiesID);
             if (roomAmenities == null)
             {
                 return NotFound();
@@ -72,65 +72,12 @@ namespace AsyncInn.Controllers
             return View(roomAmenities);
         }
 
-        // GET: RoomAmenities/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var roomAmenities = await _context.RoomAmenities.FindAsync(id);
-            if (roomAmenities == null)
-            {
-                return NotFound();
-            }
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "ID", "Name", roomAmenities.AmenitiesID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
-            return View(roomAmenities);
-        }
-
-        // POST: RoomAmenities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoomID,AmenitiesID")] RoomAmenities roomAmenities)
-        {
-            if (id != roomAmenities.RoomID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(roomAmenities);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RoomAmenitiesExists(roomAmenities.RoomID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "ID", "Name", roomAmenities.AmenitiesID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "Name", roomAmenities.RoomID);
-            return View(roomAmenities);
-        }
+       
 
         // GET: RoomAmenities/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int roomID, int amenitiesID)
         {
-            if (id == null)
+            if (roomID == 0 || amenitiesID == 0)
             {
                 return NotFound();
             }
@@ -138,7 +85,7 @@ namespace AsyncInn.Controllers
             var roomAmenities = await _context.RoomAmenities
                 .Include(r => r.Amenities)
                 .Include(r => r.Room)
-                .FirstOrDefaultAsync(m => m.RoomID == id);
+                .FirstOrDefaultAsync(m => m.RoomID == roomID);
             if (roomAmenities == null)
             {
                 return NotFound();

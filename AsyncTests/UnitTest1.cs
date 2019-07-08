@@ -6,6 +6,8 @@ using AsyncInn.Models.Services;
 using AsyncInn.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
+using AsyncInn.Models.Interfaces;
 
 namespace AsyncTests
 {
@@ -235,7 +237,7 @@ namespace AsyncTests
         }
 
         [Fact]
-        public void CanCreateHotel()
+        public async Task CanCreateHotelAsync()
         {
             DbContextOptions<AsyncInnDbContext> options = new
                 DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase
@@ -244,18 +246,24 @@ namespace AsyncTests
             using (AsyncInnDbContext context = new AsyncInnDbContext
                 (options))
             {
+                HotelManager hotelServices = new HotelManager(context);
+
                 //Arrange
                 Hotel hotel = new Hotel();
                 hotel.ID = 1;
-                hotel.Name = "Dotnet";
+                hotel.Name = "TEST";
+                hotel.StreetAddress = "Test address";
+                hotel.City = "Seattle";
+                hotel.State = "WA";
+                hotel.PhoneNumber = 456123789;
 
                 //Act
-                Hotel hotelServices = new Hotel(context);
                 await hotelServices.CreateHotel(hotel);
 
-                var result = context.Hotels.FirstOrDefault(h => h.HotelRoom == h.HotelRoom);
+                var result = context.Hotels.FirstOrDefault(h => h.Rooms == h.Rooms);
 
-                Assert.Equal(hotel, result);
+                Assert.NotNull(context.Hotels.Find(hotel.ID));
             }
+        }
     }
 }

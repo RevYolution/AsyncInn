@@ -40,14 +40,14 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Room.ID)
+                            @Html.DisplayFor(modelItem => item.Room.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Amenities.ID)
+                            @Html.DisplayFor(modelItem => item.Amenities.Name)
                         </td>
                         <td>
-                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            @Html.ActionLink("Details", "Details", new { roomID = item.RoomID, amenitiesID = item.AmenitiesID}) |
+                            @Html.ActionLink("Delete", "Delete", new { roomID = item.RoomID, amenitiesID = item.AmenitiesID})
                         </td>
                     </tr>
                 }
