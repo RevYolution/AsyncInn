@@ -246,10 +246,10 @@ namespace AsyncTests
             using (AsyncInnDbContext context = new AsyncInnDbContext
                 (options))
             {
-                HotelManager hotelServices = new HotelManager(context);
+                Hotel hotelServices = new Hotel(context);
 
                 //Arrange
-                Hotel hotel = new Hotel();
+                Hotel hotel = new Hotel(context);
                 hotel.ID = 1;
                 hotel.Name = "TEST";
                 hotel.StreetAddress = "Test address";
@@ -258,7 +258,7 @@ namespace AsyncTests
                 hotel.PhoneNumber = 456123789;
 
                 //Act
-                await hotelServices.CreateHotel(hotel);
+                await hotelServices.Create(hotel);
 
                 var result = context.Hotels.FirstOrDefault(h => h.Rooms == h.Rooms);
 
