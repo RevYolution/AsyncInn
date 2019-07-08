@@ -1,6 +1,11 @@
 using AsyncInn.Models;
 using System;
 using Xunit;
+using AsyncInn;
+using AsyncInn.Models.Services;
+using AsyncInn.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace AsyncTests
 {
@@ -125,6 +130,41 @@ namespace AsyncTests
             Room.Equals(5, testRoom.ID);
         }
 
+        [Fact]
+        public void CanGetRoomLayout()
+        {
+            Room testRoom = new Room();
+            testRoom.Layout = Layout.OneBedroom;
+            Room.Equals(Layout.OneBedroom, testRoom.Layout);
+        }
+
+        [Fact]
+        public void CanSetRoomID()
+        {
+            Room testRoom = new Room();
+            testRoom.ID = 1;
+            testRoom.ID = 2;
+            Room.Equals(2, testRoom.ID);
+        }
+
+        [Fact]
+        public void CanSetRoomName()
+        {
+            Room testRoom = new Room();
+            testRoom.Name = "Test Room 1";
+            testRoom.Name = "Test Room 2";
+            Room.Equals("Test Room 2", testRoom.Name);
+        }
+
+        [Fact]
+        public void CanSetRoomLayout()
+        {
+            Room testRoom = new Room();
+            testRoom.Layout = Layout.OneBedroom;
+            testRoom.Layout = Layout.Studio;
+            Room.Equals(Layout.Studio, testRoom.Layout);
+        }
+
 
         [Fact]
         public void CanGetNameOfAmenity()
@@ -133,5 +173,89 @@ namespace AsyncTests
             testAmenity.Name = "Test Amenity";
             Amenities.Equals("Test Amenity", testAmenity.Name);
         }
+
+        [Fact]
+        public void CanGetIDOfAmenity()
+        {
+            Amenities testAmenity = new Amenities();
+            testAmenity.ID = 1;
+            Amenities.Equals(1, testAmenity.ID);
+        }
+
+        [Fact]
+        public void CanGetAmenityID()
+        {
+            Amenities testAmenity = new Amenities();
+            testAmenity.ID = 1;
+            testAmenity.ID = 2;
+            Amenities.Equals(2, testAmenity.ID);
+        }
+
+        [Fact]
+        public void CanSetAmenityName()
+        {
+            Amenities testAmenity = new Amenities();
+            testAmenity.Name = "Test Amenity 1";
+            testAmenity.Name = "Test Amenity 2";
+            Amenities.Equals("Test Amenity 2", testAmenity.Name);
+        }
+
+        [Fact]
+        public void CanGetRoomAmenityAmentiesID()
+        {
+            RoomAmenities testRoomAmenity = new RoomAmenities();
+            testRoomAmenity.AmenitiesID = 1;
+            RoomAmenities.Equals(1, testRoomAmenity.AmenitiesID);
+        }
+
+        [Fact]
+        public void CanGetRoomAmenityRoomID()
+        {
+            RoomAmenities testRoomAmenity = new RoomAmenities();
+            testRoomAmenity.RoomID = 1;
+            RoomAmenities.Equals(1, testRoomAmenity.RoomID);
+        }
+
+        [Fact]
+        public void CanSetRoomAmenityAmenitiesID()
+        {
+            RoomAmenities testRoomAmenity = new RoomAmenities();
+            testRoomAmenity.AmenitiesID = 1;
+            testRoomAmenity.AmenitiesID = 2;
+            RoomAmenities.Equals(2, testRoomAmenity.AmenitiesID);
+        }
+
+        [Fact]
+        public void CanSetRoomAmenityRoomID()
+        {
+            RoomAmenities testRoomAmenity = new RoomAmenities();
+            testRoomAmenity.RoomID = 1;
+            testRoomAmenity.RoomID = 2;
+            RoomAmenities.Equals(2, testRoomAmenity.RoomID);
+        }
+
+        [Fact]
+        public void CanCreateHotel()
+        {
+            DbContextOptions<AsyncInnDbContext> options = new
+                DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase
+                ("CreateHotel").Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext
+                (options))
+            {
+                //Arrange
+                Hotel hotel = new Hotel();
+                hotel.ID = 1;
+                hotel.Name = "Dotnet";
+
+                //Act
+                Hotel hotelServices = new Hotel(context);
+                await hotelServices.CreateHotel(hotel);
+
+                var result = context.Hotels.FirstOrDefault(h => h.HotelRoom == h.HotelRoom);
+
+                Assert.Equal(hotel, result);
+            }
     }
 }
