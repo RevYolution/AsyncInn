@@ -46,7 +46,6 @@
                             @Html.DisplayFor(modelItem => item.Amenities.Name)
                         </td>
                         <td>
-                            @Html.ActionLink("Details", "Details", new { roomID = item.RoomID, amenitiesID = item.AmenitiesID}) |
                             @Html.ActionLink("Delete", "Delete", new { roomID = item.RoomID, amenitiesID = item.AmenitiesID})
                         </td>
                     </tr>

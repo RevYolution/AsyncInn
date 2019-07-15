@@ -236,34 +236,34 @@ namespace AsyncTests
             RoomAmenities.Equals(2, testRoomAmenity.RoomID);
         }
 
-        [Fact]
-        public async Task CanCreateHotelAsync()
-        {
-            DbContextOptions<AsyncInnDbContext> options = new
-                DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase
-                ("CreateHotel").Options;
+        //[Fact]
+        //public async Task CanCreateHotelAsync()
+        //{
+        //    DbContextOptions<AsyncInnDbContext> options = new
+        //        DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase
+        //        ("CreateHotel").Options;
 
-            using (AsyncInnDbContext context = new AsyncInnDbContext
-                (options))
-            {
-                Hotel hotelServices = new Hotel(context);
+        //    using (AsyncInnDbContext context = new AsyncInnDbContext
+        //        (options))
+        //    {
+        //        Hotel hotelServices = new Hotel(context);
 
-                //Arrange
-                Hotel hotel = new Hotel(context);
-                hotel.ID = 1;
-                hotel.Name = "TEST";
-                hotel.StreetAddress = "Test address";
-                hotel.City = "Seattle";
-                hotel.State = "WA";
-                hotel.PhoneNumber = 456123789;
+        //        //Arrange
+        //        Hotel hotel = new Hotel(context);
+        //        hotel.ID = 1;
+        //        hotel.Name = "TEST";
+        //        hotel.StreetAddress = "Test address";
+        //        hotel.City = "Seattle";
+        //        hotel.State = "WA";
+        //        hotel.PhoneNumber = 456123789;
 
-                //Act
-                await hotelServices.Create(hotel);
+        //        //Act
+        //        await hotelServices.Create(hotel);
 
-                var result = context.Hotels.FirstOrDefault(h => h.Rooms == h.Rooms);
+        //        var result = context.Hotels.FirstOrDefault(h => h.Rooms == h.Rooms);
 
-                Assert.NotNull(context.Hotels.Find(hotel.ID));
-            }
-        }
+        //        Assert.NotNull(context.Hotels.Find(hotel.ID));
+        //    }
+        //}
     }
 }
