@@ -33,12 +33,14 @@ Then select and open ```AsyncInn.sln```
 ##### Diagram of Database
 ![Async Database](https://github.com/RevYolution/AsyncInn/blob/master/assets/AsyncInnLab.png)
 ##### Application Start
-Coming Soon
+![Application Home Page](https://github.com/RevYolution/AsyncInn/blob/master/assets/HomePage.PNG)
 ##### Using the Application
-Coming Soon
+![Manage Hotel Page](https://github.com/RevYolution/AsyncInn/blob/master/assets/ManageHotels.PNG)
+
+![Manage Room Page](https://github.com/RevYolution/AsyncInn/blob/master/assets/ManageRooms.PNG)
 ##### Application End
 Coming Soon
 ------------------------------
 
 ## Change Log
-
+1.1 Added link to deployed site. Added photos of examples of application running. Fixed bugs with links not working off of HotelRooms. 
