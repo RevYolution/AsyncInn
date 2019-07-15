@@ -31,21 +31,20 @@ Then select and open ```AsyncInn.sln```
 
 ## Visuals
 
-##### Diagram of Database
+#### Diagram of Database
 ![Async Database](https://github.com/RevYolution/AsyncInn/blob/master/assets/AsyncInnLab.png)
-##### Application Start
+#### Application Start
 
 On application start the Home Page will be displayed with all the actions needed to manage the Async Inn Hotel chain. Quick add actions are present for migration to add new desired items. The header allows for migration to manage the different aspects of the Hotels.
 ![Application Home Page](https://github.com/RevYolution/AsyncInn/blob/master/assets/HomePage.PNG)
-##### Using the Application
+#### Using the Application
 
 Shown is an example of what is expected when on Hotels Home Page
 ![Manage Hotel Page](https://github.com/RevYolution/AsyncInn/blob/master/assets/ManageHotels.PNG)
 
 Show is an example of what is expected when on Rooms Home Page
 ![Manage Room Page](https://github.com/RevYolution/AsyncInn/blob/master/assets/ManageRooms.PNG)
-##### Application End
-Coming Soon
+
 ------------------------------
 
 ## Change Log
