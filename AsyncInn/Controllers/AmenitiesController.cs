@@ -27,12 +27,21 @@ namespace AsyncInn.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Directs to Amenities Home Page and displays all Amenities in the Database
+        /// </summary>
+        /// <returns>Amenities Home Page</returns>
         // GET: Amenities
         public async Task<IActionResult> Index()
         {
             return View(await _context.GetAmenitiesAsync());
         }
 
+        /// <summary>
+        /// Shows the details of an Amenity based off its ID
+        /// </summary>
+        /// <param name="id">ID of the Amenity</param>
+        /// <returns>Detail Page of Amenity</returns>
         // GET: Amenities/Details/5
         public async Task<IActionResult> Details(int id)
         {
@@ -50,6 +59,10 @@ namespace AsyncInn.Controllers
             return View(amenities);
         }
 
+        /// <summary>
+        /// Allows for the creation of a new Amenity
+        /// </summary>
+        /// <returns>Directs the Create View Page</returns>
         // GET: Amenities/Create
         public IActionResult Create()
         {
@@ -81,7 +94,7 @@ namespace AsyncInn.Controllers
         /// <summary>
         /// Edit an amenity
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ID of the Amenity</param>
         /// <returns></returns>
         public async Task<IActionResult> Edit(int id)
         {

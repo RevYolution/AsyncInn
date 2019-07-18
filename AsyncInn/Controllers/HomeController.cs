@@ -8,6 +8,10 @@ namespace AsyncInn.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// Directs to the Home Page of the Application
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();

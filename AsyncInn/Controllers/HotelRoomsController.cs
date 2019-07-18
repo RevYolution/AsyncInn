@@ -19,6 +19,10 @@ namespace AsyncInn.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Directs to Hotel Home Rooms Page and displays all Hotel Rooms in the Database
+        /// </summary>
+        /// <returns>Hotel Rooms Home Page</returns>
         // GET: HotelRooms
         public async Task<IActionResult> Index()
         {
