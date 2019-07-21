@@ -49,3 +49,4 @@ Show is an example of what is expected when on Rooms Home Page
 
 ## Change Log
 1.1 Added link to deployed site. Added photos of examples of application running. Fixed bugs with links not working off of HotelRooms. 
+1.2 All controllers have comments. All CRUD operations working. 
