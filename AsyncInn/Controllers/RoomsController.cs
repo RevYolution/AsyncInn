@@ -13,19 +13,35 @@ namespace AsyncInn.Controllers
 {
     public class RoomsController : Controller
     {
+        /// <summary>
+        /// Context for Rooms
+        /// </summary>
         private readonly IRoomManager _context;
 
+        /// <summary>
+        /// Initializes new instance of the Rooms controller
+        /// </summary>
+        /// <param name="context"></param>
         public RoomsController(IRoomManager context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Directs to Rooms Home Page and displays all Rooms in the Database
+        /// </summary>
+        /// <returns>Rooms Home Page</returns>
         // GET: Rooms
         public async Task<IActionResult> Index()
         {
             return View(await _context.GetRoomsAsync());
         }
 
+        /// <summary>
+        /// Shows the details of a Room based off its ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Detail Page of Room</returns>
         // GET: Rooms/Details/5
         public async Task<IActionResult> Details(int id)
         {
@@ -43,12 +59,21 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
+        /// <summary>
+        /// Allows for the creation of a new Room
+        /// </summary>
+        /// <returns>Directs to the Create View Page</returns>
         // GET: Rooms/Create
         public IActionResult Create()
         {
             return View();
         }
 
+        /// <summary>
+        /// Creates a new Room in the database
+        /// </summary>
+        /// <param name="room"></param>
+        /// <returns>Room Home Page with the new Room</returns>
         // POST: Rooms/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -64,6 +89,11 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
+        /// <summary>
+        /// Allows for Updating of a Room
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Edit View Page for a Room</returns>
         // GET: Rooms/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
@@ -80,6 +110,12 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
+        /// <summary>
+        /// Updates the Room in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="room"></param>
+        /// <returns>Hotel Room Page with the Updated Room</returns>
         // POST: Rooms/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -114,6 +150,11 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
+        /// <summary>
+        /// Allows for the Removal of a Room
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Delete View Page of a Room</returns>
         // GET: Rooms/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
@@ -131,6 +172,11 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
+        /// <summary>
+        /// Removes a Room in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Room Home Page without the given Room</returns>
         // POST: Rooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -140,6 +186,11 @@ namespace AsyncInn.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Checks for a given Room
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool RoomExists(int id)
         {
             return _context.GetRoomAsync(id) != null;

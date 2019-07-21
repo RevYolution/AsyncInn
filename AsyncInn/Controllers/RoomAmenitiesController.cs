@@ -12,13 +12,24 @@ namespace AsyncInn.Controllers
 {
     public class RoomAmenitiesController : Controller
     {
+        /// <summary>
+        /// Context for Room Amenities
+        /// </summary>
         private readonly AsyncInnDbContext _context;
 
+        /// <summary>
+        /// Initializes new instance of the Room Amenities
+        /// </summary>
+        /// <param name="context"></param>
         public RoomAmenitiesController(AsyncInnDbContext context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Directs to the Room Amenities Home Page and dispalys all Room Amenities
+        /// </summary>
+        /// <returns>Room Amenities Home Page</returns>
         // GET: RoomAmenities
         public async Task<IActionResult> Index()
         {
@@ -26,6 +37,12 @@ namespace AsyncInn.Controllers
             return View(await asyncInnDbContext.ToListAsync());
         }
 
+        /// <summary>
+        /// Shows the details of a Room Amenity based off its ID
+        /// </summary>
+        /// <param name="roomID"></param>
+        /// <param name="amenitiesID"></param>
+        /// <returns>Detail Page of Room Amenity</returns>
         // GET: RoomAmenities/Details/5
         public async Task<IActionResult> Details(int roomID, int amenitiesID)
         {
@@ -46,6 +63,10 @@ namespace AsyncInn.Controllers
             return View(roomAmenities);
         }
 
+        /// <summary>
+        /// Allows for the creation of a new Room Amenity
+        /// </summary>
+        /// <returns>Directs to the Create View Page</returns>
         // GET: RoomAmenities/Create
         public IActionResult Create()
         {
@@ -54,6 +75,11 @@ namespace AsyncInn.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Creates a new Room Amenity in the database
+        /// </summary>
+        /// <param name="roomAmenities"></param>
+        /// <returns>Room Amenity Home Page with the new Room Amenity</returns>
         // POST: RoomAmenities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -72,8 +98,13 @@ namespace AsyncInn.Controllers
             return View(roomAmenities);
         }
 
-       
 
+        /// <summary>
+        /// Allows for the Removal of a Room Amenity
+        /// </summary>
+        /// <param name="roomID"></param>
+        /// <param name="amenitiesID"></param>
+        /// <returns>Delete View Page of a Room Amenity</returns>
         // GET: RoomAmenities/Delete/5
         public async Task<IActionResult> Delete(int roomID, int amenitiesID)
         {
@@ -94,6 +125,11 @@ namespace AsyncInn.Controllers
             return View(roomAmenities);
         }
 
+        /// <summary>
+        /// Removes a Room Amenity in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Room Amenity Home Page without the given Room Amenity</returns>
         // POST: RoomAmenities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
